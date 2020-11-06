@@ -1,0 +1,16 @@
+$bkgd-color: rgba(255,255,255,0.66);
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+
+    p {
+        font-weight: bold;
+        border: 1px solid #545454;
+        border-radius: 3px;
+        padding: 10px;
+        background-color: $bkgd-color;
+        white-space: pre;
+    }
+}

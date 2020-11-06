@@ -1,6 +1,7 @@
 import { checkForName } from './js/nameChecker'
 import { checkForURL } from './js/URLChecker'
 import { handleSubmit } from './js/formHandler'
+import bkgd_img from './media/data_graphs_blurred.jpg'
 
 
 import './styles/resets.scss'
@@ -9,13 +10,11 @@ import './styles/form.scss'
 import './styles/footer.scss'
 import './styles/header.scss'
 
-//console.log(checkForName);
 
-//alert("I EXIST")
-//console.log("CHANGE!!");
 
 export {
     checkForName,
     checkForURL,
-    handleSubmit
+    handleSubmit,
+    bkgd_img
 }

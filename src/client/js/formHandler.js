@@ -21,10 +21,8 @@ function handleSubmit(event) {
         })
     }   else {
             alert('The URL is probably invalid. Please try again.');
-        }
-    
+        }  
 }
-
 
 //POST to the server
 const postData = async ( url = '', APIdata = {})=>{
