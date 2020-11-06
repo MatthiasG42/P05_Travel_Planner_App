@@ -32,8 +32,8 @@ console.log(__dirname)
 console.log(JSON.stringify(mockAPIResponse))
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 /*var textapi = new mcloud({
