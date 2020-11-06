@@ -1,9 +1,10 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
+    // receive the input
     let formText = document.getElementById('url').value
     
+    //check the URL for correctness
     if(Client.checkForURL(formText))
     {
         console.log(formText)
@@ -12,6 +13,7 @@ function handleSubmit(event) {
 
         postData('http://localhost:8085/api', {url: formText})
 
+        //update the index.html Results Form
         .then(function(APIdata) {
             document.getElementById('polarity').innerHTML = `Score on Polarity: ${APIdata.score_tag}`;
             document.getElementById("agreement").innerHTML = `Agreement: ${APIdata.agreement}`;

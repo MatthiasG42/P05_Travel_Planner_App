@@ -30,7 +30,6 @@ app.get('/', function (req, res) {
  // API
 const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 const apiKey = process.env.API_KEY;
-console.log(`Your API Key is ${process.env.API_KEY}`);
 let userURL = [];
 
  // POST Route
