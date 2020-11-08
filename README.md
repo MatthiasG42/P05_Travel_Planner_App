@@ -23,6 +23,7 @@ The used API is provided by MeaningCloud, from where we are using the Sentiment 
 
 ## Extras
 - check for a valid URL, alerts in case there is a fault
+- using JEST to test the URL check, with a given correct and wrong input
 
 ## Author
 Matthias Gudernatsch
