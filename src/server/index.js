@@ -27,20 +27,20 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
- // API
-const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
-const apiKey = process.env.API_KEY;
+ // API Geonames
+const baseURL_Geonames = 'http://api.geonames.org/searchJSON?q';
+const GeoUser = process.env.Geonames_username;
 
  // POST Route
-app.post('/api', async function(req, res) {
-    const userURL = req.body.url;
-    console.log(`URL to be processed: ${userURL}`);
-    const apiURL = `${baseURL}?key=${apiKey}&url=${userURL}&lang=en`;
-
-    const response = await fetch(apiURL);
-    const APIdata = await response.json();
-    console.log(APIdata);
-    res.send(APIdata);
+app.post('/geodata', async function(req, res) {
+    const userCity = encodeURI(req.body.city);
+    console.log(`City to used for GeoData: ${userCity}`);
+    
+    const apiGeoData = `${baseURL_Geonames}=${userCity}&maxRows=1&username=${GeoUser}`;
+    console.log(apiGeoData);
+    const response_GeoAPI = await fetch(apiGeoData);
+    const GeoToJSON = await response_GeoAPI.json();
+    res.send(GeoToJSON);
 })
 
 // designates what port the app will listen to for incoming requests

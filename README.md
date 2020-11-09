@@ -1,4 +1,4 @@
-# P04 Evaluate a news article with Natural Language Processing
+# P05 Build a Travel Planner APP
 This is the fourth project for the Udacity course "Front End Web Developer"
 
 ## Table of Contents

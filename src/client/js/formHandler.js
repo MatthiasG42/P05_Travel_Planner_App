@@ -1,35 +1,24 @@
-function handleSubmit(event) {
+const handleSubmit = async (event) => {
     event.preventDefault()
 
     // receive the input
-    let formText = document.getElementById('url').value
-    
-    //check the URL for correctness
-    if(Client.checkForURL(formText))
-    {
-        console.log(formText)
+    let city_input = document.getElementById('city').value
+      
+    //console.log(city_input)
 
-        console.log("::: Form Submitted :::")
+    console.log("::: Form Submitted :::")
 
-        postData('http://localhost:8085/api', {url: formText})
+    //Global Variables to save API data
+    let city_GeoData = {}
+    let city_WeatherData = {}
+    let city_ImagesData = {}
 
-        //update the index.html Results Form
-        .then(function(APIdata) {
-            document.getElementById('polarity').innerHTML = `Score on Polarity: ${APIdata.score_tag}`;
-            document.getElementById("agreement").innerHTML = `Agreement: ${APIdata.agreement}`;
-            document.getElementById("subjectivity").innerHTML = `Subjectivity: ${APIdata.subjectivity}`;
-            document.getElementById("confidence").innerHTML = `Confidence: ${APIdata.confidence}`;
-            document.getElementById("irony").innerHTML = `Irony: ${APIdata.irony}`;
-        })
-    }   else {
-            alert('The URL is probably invalid. Please try again.');
-        }  
-}
+    //------------------------------------------------------------------------
+    //POST to the Geonames server API
+    //------------------------------------------------------------------------
+    console.log('In Progress...', city_input)
 
-//POST to the server
-const postData = async ( url = '', APIdata = {})=>{
-    console.log('In Progress...', APIdata)
-    const response = await fetch(url, {
+    const response_GeoAPI = await fetch("http://localhost:8085/geodata", {
         method: 'POST', 
         credentials: 'same-origin',
         mode: 'cors',
@@ -37,17 +26,41 @@ const postData = async ( url = '', APIdata = {})=>{
             'Content-Type': 'application/json',
         },
         // Body data type must match "Content-Type" header        
-        body: JSON.stringify(APIdata)
+        body: JSON.stringify({city: city_input})
     });
   
     try {
-        const newAPIData = await response.json();
-        console.log('Analysation complete: ', newAPIData)
-        return newAPIData;
-        } catch(error) {
+            const newGeoData = await response_GeoAPI.json();
+            city_GeoData = {
+                city: newGeoData.geonames[0].name,
+                country: newGeoData.geonames[0].countryName,
+                countryCode: newGeoData.geonames[0].countryCode,
+                lat: newGeoData.geonames[0].lat,
+                lng: newGeoData.geonames[0].lng
+            }
+            console.log('Geotracking complete: ', city_GeoData)
+        } 
+        catch(error) {
             console.log("error", error);
         }
-  }
+
+    //------------------------------------------------------------------------
+    //POST to the Geonames server API
+    //------------------------------------------------------------------------
+
+
+    //update the index.html Results Form
+    
+        document.getElementById('polarity').innerHTML = `Score on Polarity: ${city_GeoData.city}`;
+        document.getElementById("agreement").innerHTML = `Agreement: ${city_GeoData.country}`;
+        document.getElementById("subjectivity").innerHTML = `Subjectivity: ${city_GeoData.countryCode}`;
+        document.getElementById("confidence").innerHTML = `Confidence: ${city_GeoData.lat}`;
+        document.getElementById("irony").innerHTML = `Irony: ${city_GeoData.lng}`;
+    
+     
+}
+
+
 
 export { handleSubmit }
 
