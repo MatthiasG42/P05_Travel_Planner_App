@@ -4,15 +4,14 @@ const handleSubmit = async (event) => {
     // receive the input
     let city_input = document.getElementById('city').value
       
-    //console.log(city_input)
-
-    console.log("::: Form Submitted :::")
-
-    //Global Variables to save API data
+    
+    //Variables to save API data to
     let city_GeoData = {}
     let city_WeatherData = {}
     let city_ImagesData = {}
     let country_RestData = {}
+    //Variable for the Start - End Dates and Duration
+    let trip_Dates = {}
 
     //------------------------------------------------------------------------
     //POST to the Geonames API
@@ -118,17 +117,24 @@ const handleSubmit = async (event) => {
         }
 
     //update the index.html Results Form
-    
+    /*
         document.getElementById('polarity').innerHTML = `Score on Polarity: ${city_GeoData.city}`;
         document.getElementById("agreement").innerHTML = `Agreement: ${city_GeoData.country}`;
         document.getElementById("subjectivity").innerHTML = `Subjectivity: ${city_GeoData.countryCode}`;
         document.getElementById("confidence").innerHTML = `Confidence: ${city_GeoData.lat}`;
         document.getElementById("irony").innerHTML = `Irony: ${city_GeoData.lng}`;
+    */
     
-     
+    //------------------------------------------------------------------------
+    //Update the Page with all Data received
+    //------------------------------------------------------------------------
+
+    
+    const mainBody = document.querySelector('main');
+    const AllData = document.createElement('section');
+    AllData.innerHTML = Client.tripUpdate(trip_Dates, city_GeoData, city_WeatherData, city_ImagesData, country_RestData);
+    mainBody.appendChild(AllData);
 }
-
-
 
 export { handleSubmit }
 

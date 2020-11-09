@@ -1,6 +1,5 @@
-import { checkForName } from './js/nameChecker'
-import { checkForURL } from './js/URLChecker'
 import { handleSubmit } from './js/formHandler'
+import { tripUpdate } from './js/tripDataUpdate'
 import bkgd_img from './media/travel_map.jpg'
 
 
@@ -13,8 +12,7 @@ import './styles/header.scss'
 
 
 export {
-    checkForName,
-    checkForURL,
+    tripUpdate,
     handleSubmit,
     bkgd_img
 }

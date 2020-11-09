@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 
-
 app.use(express.static('dist'))
 
 console.log(__dirname)
@@ -118,8 +117,7 @@ const baseURL_Restcountries = 'https://restcountries.eu/rest/v2/alpha/';
 
  // POST Route /rest
 app.post('/rest', async function(req, res) {
-    
-    
+        
     countrycode = req.body.countryCode;
     console.log(`Countrycode: ${countrycode}`);
     
@@ -130,12 +128,8 @@ app.post('/rest', async function(req, res) {
     res.send(RestcountriesToJSON);
 })
 
+//------------------------------------------------------------------------
 // designates what port the app will listen to for incoming requests
 app.listen(8085, function () {
-    console.log('Example app listening on port 8085!');
-    console.log(`Your API key is ${process.env.API_KEY}`);
-})
-
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse);
+    console.log('Travel Planner app listening on port 8085!');
 })
