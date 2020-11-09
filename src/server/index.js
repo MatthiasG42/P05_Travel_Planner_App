@@ -27,20 +27,93 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
- // API Geonames
-const baseURL_Geonames = 'http://api.geonames.org/searchJSON?q';
-const GeoUser = process.env.Geonames_username;
+//------------------------------------------------------------------------
+//POST to the Geonames Server API
+//------------------------------------------------------------------------
 
- // POST Route
+// API Geonames URL
+const baseURL_Geonames = 'http://api.geonames.org/searchJSON?q';
+// API Geonames username form .env - Geonames_username
+const geoUser = process.env.Geonames_username;
+
+ // POST Route /geodata
 app.post('/geodata', async function(req, res) {
     const userCity = encodeURI(req.body.city);
     console.log(`City to used for GeoData: ${userCity}`);
     
-    const apiGeoData = `${baseURL_Geonames}=${userCity}&maxRows=1&username=${GeoUser}`;
+    const apiGeoData = `${baseURL_Geonames}=${userCity}&maxRows=1&username=${geoUser}`;
     console.log(apiGeoData);
     const response_GeoAPI = await fetch(apiGeoData);
     const GeoToJSON = await response_GeoAPI.json();
     res.send(GeoToJSON);
+})
+
+//------------------------------------------------------------------------
+//POST to the Weatherbit Server API
+//------------------------------------------------------------------------
+
+// API Weatherbit URL
+const baseURL_Weatherbit = 'https://api.weatherbit.io/v2.0/forecast/daily';
+// API Weatherbit KEY .env - Weatherbit_KEY
+const weatherbit_KEY = process.env.Weatherbit_KEY;
+
+ // POST Route /weatherdata
+app.post('/weatherdata', async function(req, res) {
+    
+    latitude = req.body.lat;
+    longitude = req.body.lng;
+
+    console.log(`City GeoKoordinates, Latitude: ${latitude} - Longitude: ${longitude}`);
+    
+    const apiWeatherData = `${baseURL_Weatherbit}?&lat=${latitude}&lon=${longitude}&key=${weatherbit_KEY}`;
+    console.log(apiWeatherData);
+    const response_WeatherAPI = await fetch(apiWeatherData);
+    const WeatherToJSON = await response_WeatherAPI.json();
+    res.send(WeatherToJSON);
+})
+
+//------------------------------------------------------------------------
+//POST to the Pixabay Server API
+//------------------------------------------------------------------------
+
+// API Pixabay URL
+const baseURL_Pixabay = 'https://pixabay.com/api/';
+// API Pixabay KEY .env - Pixabay_KEY
+const Pixabay_KEY = process.env.Pixabay_KEY;
+
+ // POST Route /pictures
+app.post('/pictures', async function(req, res) {
+    
+    city = req.body.city;
+    country = req.body.country;
+    console.log(`City: ${city}, Country: ${country}`);
+    
+    const apiPicturesCity = `${baseURL_Pixabay}?key=${Pixabay_KEY}&q=${city}&image_type=photo&orientation=horizontal&per_page=3&pretty=true`;
+    console.log(apiPicturesCity);
+    const response_PicturesAPI = await fetch(apiPicturesCity);
+    const PicturesCityToJSON = await response_PicturesAPI.json();
+    res.send(PicturesCityToJSON);
+})
+
+//------------------------------------------------------------------------
+//POST to the REST Countries Server API
+//------------------------------------------------------------------------
+
+// API REST Countries URL
+const baseURL_Restcountries = 'https://restcountries.eu/rest/v2/alpha/';
+
+ // POST Route /rest
+app.post('/rest', async function(req, res) {
+    
+    
+    countrycode = req.body.countryCode;
+    console.log(`Countrycode: ${countrycode}`);
+    
+    const apiRestcountries = `${baseURL_Restcountries}${countrycode}`;
+    console.log(apiRestcountries);
+    const response_RestAPI = await fetch(apiRestcountries);
+    const RestcountriesToJSON = await response_RestAPI.json();
+    res.send(RestcountriesToJSON);
 })
 
 // designates what port the app will listen to for incoming requests
