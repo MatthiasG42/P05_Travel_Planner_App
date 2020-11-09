@@ -3,7 +3,17 @@ const handleSubmit = async (event) => {
 
     // receive the input
     let city_input = document.getElementById('city').value
-      
+    
+    // For the displayed format without hours
+    let trip_start_date = document.getElementById('start_date').value
+    let trip_end_date = document.getElementById('end_date').value
+    // to calculate the differences
+    let start_date = new Date (document.getElementById('start_date').value)
+    let end_date = new Date (document.getElementById('end_date').value)
+    
+    
+    
+    
     
     //Variables to save API data to
     let city_GeoData = {}
@@ -12,6 +22,20 @@ const handleSubmit = async (event) => {
     let country_RestData = {}
     //Variable for the Start - End Dates and Duration
     let trip_Dates = {}
+
+    //------------------------------------------------------------------------
+    //Handling of the Dates with help from https://stackoverrun.com/de/q/561833
+    //------------------------------------------------------------------------
+    let today = new Date();
+    //To compare only days
+    //today.setHours(0,0,0,0);
+    const one_day = 1000*60*60*24;
+
+    let days_left = Math.round(Math.abs((start_date.getTime() - today.getTime())/(one_day)));
+    let trip_duration = Math.round(Math.abs((start_date.getTime() - end_date.getTime())/(one_day)));
+
+    trip_Dates = {trip_start_date, trip_end_date, days_left, trip_duration};
+    console.log(trip_start_date, trip_end_date, days_left, trip_duration);
 
     //------------------------------------------------------------------------
     //POST to the Geonames API
