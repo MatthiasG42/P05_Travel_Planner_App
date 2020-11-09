@@ -89,10 +89,24 @@ app.post('/pictures', async function(req, res) {
     console.log(`City: ${city}, Country: ${country}`);
     
     const apiPicturesCity = `${baseURL_Pixabay}?key=${Pixabay_KEY}&q=${city}&image_type=photo&orientation=horizontal&per_page=3&pretty=true`;
-    console.log(apiPicturesCity);
+    const apiPicturesCountry = `${baseURL_Pixabay}?key=${Pixabay_KEY}&q=${country}&image_type=photo&orientation=horizontal&per_page=3&pretty=true`;
+        
     const response_PicturesAPI = await fetch(apiPicturesCity);
     const PicturesCityToJSON = await response_PicturesAPI.json();
-    res.send(PicturesCityToJSON);
+
+    // Checking if there are pictures of the city avaiable, if not switching to the country the city is in
+    if (PicturesCityToJSON.totalHits == 0) {
+        
+        console.log(apiPicturesCountry);
+        const response_PicturesCountryAPI = await fetch(apiPicturesCountry);
+        const PicturesCountryToJSON = await response_PicturesCountryAPI.json();
+        console.log(`No city images found, switching to pictures of ${country}`)
+        res.send(PicturesCountryToJSON);
+    } 
+    else {
+        console.log(apiPicturesCity);
+        res.send(PicturesCityToJSON);
+    }
 })
 
 //------------------------------------------------------------------------
