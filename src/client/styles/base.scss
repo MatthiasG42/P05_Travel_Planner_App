@@ -16,30 +16,54 @@ body {
         margin: 5%;
         background-color: $bkgd-color;
         width: 90%;
+        flex:2;
         
 
     }
 }
-
-/*header {
-    width: 90%;
-    background-image: url(../media/Title_wide.png);
-    background-size: auto;
-    background-repeat: no-repeat;
-    justify-content: center;
-  }*/
 
 section {
     max-width: 800px;
     margin: 50px auto;
 }
 
-// Setting the grid
+
+//------------------------------------------------------------------------
+//Defining the tripcard
+//------------------------------------------------------------------------
+
+
+.trip_card_days {
+    
+    border: 1px solid #545454;
+    border-radius: 5px;
+    margin:5px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px 10px;
+    grid-template-areas:
+      "Start End Dur Days"
+      "var_start var_end var_dur var_days";
+  }
+  .Start { grid-area: Start; }
+  .End { grid-area: End; }
+  .Dur { grid-area: Dur; }
+  .Days { grid-area: Days; }
+  .var_start { grid-area: var_start; }
+  .var_end { grid-area: var_end; }
+  .var_dur { grid-area: var_dur; }
+  .var_days { grid-area: var_days; }
+
+
+//------------------------------------------------------------------------
+//Setting the Grid
+//------------------------------------------------------------------------
 
 .container{
     display:grid;
     padding: 1em;  
-    font-family: 'Baloo Tamma 2', cursive;
   }
 
   .header{
@@ -65,7 +89,8 @@ section {
     .container{
       display:grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 100px minmax(400px,maxcontent) 60px;
+      grid-template-rows: 125px minmax(400px,maxcontent) 60px;
+      align-items: center;
       grid-template-areas:
       "hd"
       "co"  
@@ -73,10 +98,10 @@ section {
       border: 2px solid white;
     }
     #headline_title{
-      width: 90%;
+      width: 50vw;
+      height: 125px;
       background-image: url(../media/Title_SHORT.png);
-     
-      
+      background-position: center;
     }
    
   }
@@ -86,18 +111,17 @@ section {
     .container{
       display:grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 100px minmax(1fr,maxcontent) 60px;
+      grid-template-rows: 150px minmax(1fr,maxcontent) 60px;
       grid-template-areas: 
-      "hd hd hd"
-      "co co co"
-      "ft ft ft";
+      "hd"
+      "co"
+      "ft";
       border: 2px solid white;
     }
     
     #headline_title{
       width: 50vw;
       background-image: url(../media/Title_WIDE.png);
-      background-repeat: no-repeat;
     } 
   }
   
@@ -106,17 +130,17 @@ section {
     .container{
       display:grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 100px minmax(400px,maxcontent) 1fr 60px;
+      grid-template-rows: 125px minmax(1fr,maxcontent) 60px;
       grid-template-areas: 
-      "hd hd hd hd hd"
-      "co co co co co"
-      "ft ft ft ft ft";
+      "hd"
+      "co"
+      "ft";
       border: 2px solid white;
     }
       
     #headline_title{
       width: 60vw;
+      height: 125px;
       background-image: url(../media/Title_WIDE.png);
-      background-repeat: no-repeat;
     } 
   }
