@@ -1,6 +1,5 @@
 const path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const fetch = require('node-fetch');
@@ -25,6 +24,9 @@ console.log(__dirname)
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
+app.get("/test", async (req, res) => {
+    res.json({ message: "pass!" });
+  });
 
 //------------------------------------------------------------------------
 //POST to the Geonames Server API
@@ -133,3 +135,6 @@ app.post('/rest', async function(req, res) {
 app.listen(8085, function () {
     console.log('Travel Planner app listening on port 8085!');
 })
+
+//For the JEST  server supertest
+module.exports = { app }

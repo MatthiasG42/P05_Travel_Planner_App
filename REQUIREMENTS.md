@@ -2,22 +2,33 @@
 
 ### Your project must:
 
-- [x] Be set up with Webpack, Express, Node, and Sass, and Service Workers
+- [x] Should have the correct architecture
 
-- [x] Have separate dev and prod configurations for Webpack
+- [x] Webpack config should contain at least 3 scripts, express server, build and test. 
 
-- [x] Have the developer environment set up with the Webpack dev server
+- [x] There should be at least one test for the express server and application javascript
 
-- [x] Have a minimum of one form field
+- [x] The project must have service workers installed.
 
-- [x] Make one request to the MeaningCloud API
+- [x] All features are usable across modern desktop, tablet, and phone browsers.
 
-- [x] Use Sass for styling
+- [x] Styling is set up in a logical way. All interactive elements have hover states.
 
-- [x] Minify js and styles in the production environment
+- [x] HTML structure should be indented properly with classes and ID’s that make sense. 
 
-- [x] Response from the API must be added to the view for a user to see 
+- [x] The design should clearly be different from the design used in projects 3 and 4. 
 
-- [x] Be able to show content offline
+- [x] Server should be a near duplication of project 3 with the exception of additional added member: value pairs. 
 
-All of these requirements are explained throughout the course. Specifics on setting up the Aylien API are found in the README file of this repo.
+- [x] At least one function / event listener should be imported.
+
+- [x] There should be URLS and API Keys for at least 3 APIs, including Geonames, Weatherbit, and Pixabay.
+
+- [x] There should be a primary object with placeholder member value pairs.
+
+- [x] There should be a primary function that is exported to index.js.
+
+- [x] At least one option from the Extend your Project/Ways to Stand Out sections have been added.
+
+- [x] A README file is included detailing the app and all dependencies.
+

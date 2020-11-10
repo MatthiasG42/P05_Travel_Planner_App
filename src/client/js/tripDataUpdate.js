@@ -1,3 +1,4 @@
+//function to update the webpage
 function tripUpdate(dates, geoData, weather, pictures, rest ){
     return `
             <section class= "trip_card" id="trip">

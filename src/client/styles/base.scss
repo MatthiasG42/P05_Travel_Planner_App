@@ -1,7 +1,6 @@
 $bkgd-color: rgba(255,255,255,0.66);
 
 body {
-    //font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-family: 'Roboto Slab', serif;
     display: flex;
     flex-direction: column;
@@ -63,17 +62,25 @@ section {
       "trip_card_weather_page2 trip_card_weather_page2"
       "rest_info rest_info";
 
-    
       img {
         width: auto;
         max-width: 300px;
         object-fit: cover;
+        box-shadow: 8px 8px 4px grey;
     }
   }
-  .city_image { grid-area: city_image; place-self: center;}
-  .trip_header { grid-area: trip_header; place-self: center; font-size: 2em; font-weight: bold; }
-  .trip_card_days { grid-area: trip_card_days; place-self: center;  }
-  .trip_card_weather { grid-area: trip_card_weather; }
+  .city_image {
+      grid-area: city_image;
+      place-self: center;}
+  .trip_header {
+      grid-area: trip_header;
+      place-self: center;
+      font-size: 2em;
+      font-weight: bold; }
+  .trip_card_days {
+      grid-area: trip_card_days;
+      place-self: center;  }
+  .trip_card_weather {grid-area: trip_card_weather; }
   .trip_card_weather_page2 { grid-area: trip_card_weather_page2; }
   .rest_info { grid-area: rest_info; }
 
@@ -92,11 +99,19 @@ section {
       "Start End Dur Days"
       "var_start var_end var_dur var_days";
   }
-  .Start { grid-area: Start; font-weight: bold; }
-  .End { grid-area: End; font-weight: bold; }
-  .Dur { grid-area: Dur; font-weight: bold;}
-  .Days { grid-area: Days; font-weight: bold; }
-  .var_start { grid-area: var_start; }
+  .Start {
+      grid-area: Start;
+      font-weight: bold; }
+  .End {
+      grid-area: End;
+      font-weight: bold; }
+  .Dur {
+      grid-area: Dur;
+      font-weight: bold;}
+  .Days {
+      grid-area: Days;
+      font-weight: bold; }
+  .var_start {grid-area: var_start; }
   .var_end { grid-area: var_end; }
   .var_dur { grid-area: var_dur; }
   .var_days { grid-area: var_days; }
@@ -127,7 +142,9 @@ section {
         "w_d4 w_d5 w_d6 w_d7"
         "whl_d4 whl_d5 whl_d6 whl_d7";
     }
-    .w_date { grid-area: w_date; font-weight: bold;}
+    .w_date {
+        grid-area: w_date;
+        font-weight: bold;}
     .d1 { grid-area: d1; }
     .d2 { grid-area: d2; }
     .d3 { grid-area: d3; }
@@ -135,7 +152,9 @@ section {
     .d5 { grid-area: d5; }
     .d6 { grid-area: d6; }
     .d7 { grid-area: d7; }
-    .w_des { grid-area: w_des; font-weight: bold;}
+    .w_des { 
+        grid-area: w_des; 
+        font-weight: bold;}
     .w_d1 { grid-area: w_d1; }
     .w_d2 { grid-area: w_d2; }
     .w_d3 { grid-area: w_d3; }
@@ -143,7 +162,9 @@ section {
     .w_d5 { grid-area: w_d5; }
     .w_d6 { grid-area: w_d6; }
     .w_d7 { grid-area: w_d7; }
-    .w_hl { grid-area: w_hl; font-weight: bold;}
+    .w_hl { 
+        grid-area: w_hl;
+        font-weight: bold;}
     .whl_d1 { grid-area: whl_d1; }
     .whl_d2 { grid-area: whl_d2; }
     .whl_d3 { grid-area: whl_d3; }

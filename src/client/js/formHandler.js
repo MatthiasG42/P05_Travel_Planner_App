@@ -12,7 +12,10 @@ const handleSubmit = async (event) => {
     let end_date = new Date (document.getElementById('end_date').value)
     let today = new Date();
 
-    //Check to see if the input makes sense
+    //------------------------------------------------------------------------
+    ////Check to see if the input makes sense
+    //------------------------------------------------------------------------
+
     //Empty city selection
     if (city_input == ""){
         alert("You have not entered a city yet");
@@ -43,8 +46,6 @@ const handleSubmit = async (event) => {
     //Handling of the Dates with help from https://stackoverrun.com/de/q/561833
     //------------------------------------------------------------------------
     
-    //To compare only days
-    //today.setHours(0,0,0,0);
     const one_day = 1000*60*60*24;
 
     let days_left = Math.round(Math.abs((start_date.getTime() - today.getTime())/(one_day)));
@@ -155,23 +156,14 @@ const handleSubmit = async (event) => {
         catch(error) {
             console.log("error", error);
         }
-
-    //update the index.html Results Form
-    /*
-        document.getElementById('polarity').innerHTML = `Score on Polarity: ${city_GeoData.city}`;
-        document.getElementById("agreement").innerHTML = `Agreement: ${city_GeoData.country}`;
-        document.getElementById("subjectivity").innerHTML = `Subjectivity: ${city_GeoData.countryCode}`;
-        document.getElementById("confidence").innerHTML = `Confidence: ${city_GeoData.lat}`;
-        document.getElementById("irony").innerHTML = `Irony: ${city_GeoData.lng}`;
-    */
-    
+  
     //------------------------------------------------------------------------
     //Update the Page with all Data received
     //------------------------------------------------------------------------
 
-    
     const mainBody = document.querySelector('main');
     const AllData = document.createElement('section');
+    //transfer all the gathered information to the function that displays our trip
     AllData.innerHTML = Client.tripUpdate(trip_Dates, city_GeoData, city_WeatherData, city_ImagesData, country_RestData);
     mainBody.appendChild(AllData);
 }
