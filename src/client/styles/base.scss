@@ -1,10 +1,11 @@
 $bkgd-color: rgba(255,255,255,0.66);
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    //font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Roboto Slab', serif;
     display: flex;
     flex-direction: column;
-    //min-height: 100vh;
+    min-height: 100vh;
     background-image: url(../media/travel_map.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,19 +28,63 @@ section {
     margin: 50px auto;
 }
 
-
 //------------------------------------------------------------------------
 //Defining the tripcard
 //------------------------------------------------------------------------
 
+#trip { 
+    border: 1px solid #545454;
+    border-radius: 3px;
+    background-color: $bkgd-color;
+}
+
+#rest { 
+    size: auto;
+    border: 1px solid #545454;
+    border-radius: 5px;
+    margin:5px;
+    padding: 5px;
+    place-self: center;
+}
+
+.trip_card {
+    display: grid;
+    gap: 10px 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    padding: 20px;
+    margin: 10px;
+    justify-content: stretch;
+    grid-template-areas:
+      "city_image trip_header"
+      "city_image trip_card_days"
+      "city_image trip_card_days"
+      "trip_card_weather trip_card_weather"
+      "trip_card_weather_page2 trip_card_weather_page2"
+      "rest_info rest_info";
+
+    
+      img {
+        width: auto;
+        max-width: 300px;
+        object-fit: cover;
+    }
+  }
+  .city_image { grid-area: city_image; place-self: center;}
+  .trip_header { grid-area: trip_header; place-self: center; font-size: 2em; font-weight: bold; }
+  .trip_card_days { grid-area: trip_card_days; place-self: center;  }
+  .trip_card_weather { grid-area: trip_card_weather; }
+  .trip_card_weather_page2 { grid-area: trip_card_weather_page2; }
+  .rest_info { grid-area: rest_info; }
 
 .trip_card_days {
-    
+    size: auto;
     border: 1px solid #545454;
     border-radius: 5px;
     margin:5px;
     padding: 5px;
     display: grid;
+    place-items: center;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px 10px;
@@ -47,14 +92,65 @@ section {
       "Start End Dur Days"
       "var_start var_end var_dur var_days";
   }
-  .Start { grid-area: Start; }
-  .End { grid-area: End; }
-  .Dur { grid-area: Dur; }
-  .Days { grid-area: Days; }
+  .Start { grid-area: Start; font-weight: bold; }
+  .End { grid-area: End; font-weight: bold; }
+  .Dur { grid-area: Dur; font-weight: bold;}
+  .Days { grid-area: Days; font-weight: bold; }
   .var_start { grid-area: var_start; }
   .var_end { grid-area: var_end; }
   .var_dur { grid-area: var_dur; }
   .var_days { grid-area: var_days; }
+
+.trip_card_weather {
+    border: 1px solid #545454;
+    border-radius: 5px;
+    margin:5px;
+    padding: 5px;
+    display: grid;
+    place-items: center;
+    gap: 10px 10px;
+    grid-template-areas:
+        "w_date d1 d2 d3"
+        "w_des w_d1 w_d2 w_d3"
+        "w_hl whl_d1 whl_d2 whl_d3";
+    }
+.trip_card_weather_page2 {
+    border: 1px solid #545454;
+    border-radius: 5px;
+    margin:5px;
+    padding: 5px;
+    display: grid;
+    place-items: center;
+    gap: 10px 10px;
+    grid-template-areas:
+        "d4 d5 d6 d7"
+        "w_d4 w_d5 w_d6 w_d7"
+        "whl_d4 whl_d5 whl_d6 whl_d7";
+    }
+    .w_date { grid-area: w_date; font-weight: bold;}
+    .d1 { grid-area: d1; }
+    .d2 { grid-area: d2; }
+    .d3 { grid-area: d3; }
+    .d4 { grid-area: d4; }
+    .d5 { grid-area: d5; }
+    .d6 { grid-area: d6; }
+    .d7 { grid-area: d7; }
+    .w_des { grid-area: w_des; font-weight: bold;}
+    .w_d1 { grid-area: w_d1; }
+    .w_d2 { grid-area: w_d2; }
+    .w_d3 { grid-area: w_d3; }
+    .w_d4 { grid-area: w_d4; }
+    .w_d5 { grid-area: w_d5; }
+    .w_d6 { grid-area: w_d6; }
+    .w_d7 { grid-area: w_d7; }
+    .w_hl { grid-area: w_hl; font-weight: bold;}
+    .whl_d1 { grid-area: whl_d1; }
+    .whl_d2 { grid-area: whl_d2; }
+    .whl_d3 { grid-area: whl_d3; }
+    .whl_d4 { grid-area: whl_d4; }
+    .whl_d5 { grid-area: whl_d5; }
+    .whl_d6 { grid-area: whl_d6; }
+    .whl_d7 { grid-area: whl_d7; }
 
 
 //------------------------------------------------------------------------
@@ -78,7 +174,6 @@ section {
   
   .content{
     grid-area: co;
-    //background: #FFF;
   }
 
 /* RESPONSIVE DESIGN  <600px|600px-900px|>900px 
@@ -86,16 +181,34 @@ section {
 
 /* If Screen Is under 600px */
 @media(max-width:599px){
+    .trip_card {
+        display: grid;
+        gap: 10px 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-areas:
+          "trip_header"
+          "city_image"
+          "trip_card_days"
+          "trip_card_weather"
+          "trip_card_weather_page2"
+          "rest_info";
+    
+          img {
+            width: auto;
+            max-width: 300px;
+        }
+      }
+
     .container{
       display:grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 125px minmax(400px,maxcontent) 60px;
+      grid-template-rows: 125px minmax(300px,maxcontent) 60px;
       align-items: center;
       grid-template-areas:
       "hd"
       "co"  
       "ft";
-      border: 2px solid white;
     }
     #headline_title{
       width: 50vw;
@@ -103,11 +216,28 @@ section {
       background-image: url(../media/Title_SHORT.png);
       background-position: center;
     }
-   
+
   }
     
   /* If Screen Is between 600 and 900px */
   @media(min-width:600px) and (max-width:900px){
+    .trip_card {
+       
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas:
+          "city_image trip_header"
+          "trip_card_days trip_card_days"
+          "trip_card_weather trip_card_weather"
+          "trip_card_weather_page2 trip_card_weather_page2"
+          "rest_info rest_info";
+    
+          img {
+            width: auto;
+            max-width: 200px;
+        }
+      }
+    
     .container{
       display:grid;
       grid-template-columns: 1fr;
@@ -116,7 +246,6 @@ section {
       "hd"
       "co"
       "ft";
-      border: 2px solid white;
     }
     
     #headline_title{
@@ -135,7 +264,6 @@ section {
       "hd"
       "co"
       "ft";
-      border: 2px solid white;
     }
       
     #headline_title{

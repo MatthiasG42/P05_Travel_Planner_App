@@ -1,39 +1,87 @@
 $bkgd-color: rgba(255,255,255,0.66);
+$hover-color:  #7C333A;
 
 form {
     border: 1px solid #545454;
     border-radius: 3px;
-    padding: 40px;
+    padding: 20px;
     background-color: $bkgd-color;
+    font-size: 1,5em;
 }
 
 input {
     padding: 5px 20px;
-    width: 80%;
     line-height: 16px;
     margin: 10px 0;
+    max-width: 300px;
+
+    &:hover{
+        background-color: $hover-color;
+        opacity: 1;
+        color: white;
+      }
 }
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1,5em;
+
+    &:hover{
+        background-color: $hover-color;
+        opacity: 1;
+        color: white;
+        text-decoration: underline;
+      }
+  }
 
 #input_field{
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-#trip {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #545454;
-    border-radius: 3px;
-    padding: 40px;
-    background-color: $bkgd-color;
-}
-
-#trip_headline {
-    padding: 5px 10px;
-    font-size: 110%;
-    font-weight: bold;
-}
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 10px 10px;
+    justify-content: left;
+    justify-items: start;
+    grid-template-areas:
+      "form_Title city_input"
+      "startdate start_input"
+      "enddate end_input"
+      "ready_to_go go_button";
+  }
+    .form_Title { 
+        grid-area: form_Title;
+        place-self: center right; }
+    .city_input { 
+        grid-area: city_input;
+        place-self: center left; }
+    .startdate {
+        grid-area: startdate;
+        place-self: center right; }
+    .start_input {
+        grid-area: start_input;
+        place-self: center left; }
+    .enddate {
+        grid-area: enddate;
+        place-self:  center right;}
+    .end_input {
+        grid-area: end_input;
+        place-self: center left; } 
+    .ready_to_go {
+        grid-area: ready_to_go;
+        place-self:  center right; }
+    .go_button {
+        grid-area: go_button;
+        place-self: center left;}
+    

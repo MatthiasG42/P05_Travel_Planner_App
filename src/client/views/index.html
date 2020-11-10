@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Travel Planner</title>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="../media/favicon.ico">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
        
     </head>
 
@@ -19,31 +20,36 @@
         </header>
 
         <main class="content">
-            <section id="input_field">
+            <section>
+                
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="city" type="text" name="input" value="" placeholder="Type your City Destination here">
-                    <input id="start_date" type="date" name="input" value="" placeholder="The start of your trip">
-                    <input id="end_date" type="date" name="input" value="" placeholder="The end of your trip">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                    <div class="form-container">
+                        <div class="form_Title">City you plan to visit</div>
+                        <div class="city_input">
+                            <input id="city" type="text" name="input" value="" placeholder="Type your City Destination here">
+                        </div>
+                        <div class="startdate">Start-date</div>
+                        <div class="start_input">
+                            <input id="start_date" type="date" name="input" value="" placeholder="The start of your trip">
+                        </div>
+                        <div class="enddate">End-date</div>
+                        <div class="end_input">
+                            <input id="end_date" type="date" name="input" value="" placeholder="The end of your trip">
+                        </div>
+                        <div class="ready_to_go">If every is correct press the button</div>
+                        <div class="go_button">
+                            <input class="button" type="submit" name="" value="Let's Go!" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                        </div>             
+                    </div>           
+                    
+                    
                 </form>
             <section>
-
-                <section class="trip_card" id="trip">
-                    <strong id="trip_headline">Your Trip</strong>
-                        <div id="destination">You are going to the beautiful city of: London</div>
-                        <div id="first_picture"><img src="https://pixabay.com/get/51e3d4414b51b10ff3d8992cc621377d1c3adce44e507749702f7bd29e4fc0_640.jpg" alt""=""></div>
-                        <div id="dates">You go from the 2020-11-13 to the 2020-11-27</div>
-                        <div id="timeframe">That is 3 days from today, and your trip duration is 14 days</div>
-                        <div id="weather">Your weather will be Broken clouds</div>
-                        <div id="rest">United Kingdom of Great Britain and Northern Ireland has London as its capital and a population of 65110000</div>
-                        <div id="irony"></div>
-                    </section>
-
             
         </main>
 
         <footer class="footer">
-            <p>Thanks for coming by!          Copyright 2020</p>
+            <p>Thank you!         Copyright 2020</p>
         </footer>
     
         <script>
