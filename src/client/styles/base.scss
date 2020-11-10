@@ -1,18 +1,122 @@
+$bkgd-color: rgba(255,255,255,0.66);
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    //min-height: 100vh;
     background-image: url(../media/travel_map.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: scroll;
 
     main {
-        flex: 2;
+        border: 1px solid #545454;
+        border-radius: 5px;
+        margin: 5%;
+        background-color: $bkgd-color;
+        width: 90%;
+        
+
     }
 }
+
+/*header {
+    width: 90%;
+    background-image: url(../media/Title_wide.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    justify-content: center;
+  }*/
 
 section {
     max-width: 800px;
     margin: 50px auto;
 }
+
+// Setting the grid
+
+.container{
+    display:grid;
+    padding: 1em;  
+    font-family: 'Baloo Tamma 2', cursive;
+  }
+
+  .header{
+    grid-area:hd;
+    margin-bottom: 0.5em;
+  }
+  
+  .footer{
+    grid-area: ft;
+    margin-top: 0.5em;  
+  }
+  
+  .content{
+    grid-area: co;
+    //background: #FFF;
+  }
+
+/* RESPONSIVE DESIGN  <600px|600px-900px|>900px 
+-----------------------------------------------------------------------*/
+
+/* If Screen Is under 600px */
+@media(max-width:599px){
+    .container{
+      display:grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 100px minmax(400px,maxcontent) 60px;
+      grid-template-areas:
+      "hd"
+      "co"  
+      "ft";
+      border: 2px solid white;
+    }
+    #headline_title{
+      width: 90%;
+      background-image: url(../media/Title_SHORT.png);
+     
+      
+    }
+   
+  }
+    
+  /* If Screen Is between 600 and 900px */
+  @media(min-width:600px) and (max-width:900px){
+    .container{
+      display:grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 100px minmax(1fr,maxcontent) 60px;
+      grid-template-areas: 
+      "hd hd hd"
+      "co co co"
+      "ft ft ft";
+      border: 2px solid white;
+    }
+    
+    #headline_title{
+      width: 50vw;
+      background-image: url(../media/Title_WIDE.png);
+      background-repeat: no-repeat;
+    } 
+  }
+  
+  /* If Screen Is wider than 900px */
+  @media(min-width:901px){
+    .container{
+      display:grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 100px minmax(400px,maxcontent) 1fr 60px;
+      grid-template-areas: 
+      "hd hd hd hd hd"
+      "co co co co co"
+      "ft ft ft ft ft";
+      border: 2px solid white;
+    }
+      
+    #headline_title{
+      width: 60vw;
+      background-image: url(../media/Title_WIDE.png);
+      background-repeat: no-repeat;
+    } 
+  }

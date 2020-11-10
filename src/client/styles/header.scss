@@ -4,18 +4,20 @@ $bkgd-color: rgba(255,255,255,0.66);
 header {
     display: flex;
     justify-content: center;
-    padding: 10px 20px;
-
+    
     section {
-        margin-bottom: 0px;
+        margin-bottom: 0px;  
     }
 }
 
-#headline {
-    font-size: 2em;
-    font-weight: bold;
+#headline_title {
+    
     border: 1px solid #545454;
     border-radius: 3px;
-    padding: 10px;
-    background-color: $bkgd-color;
+      
+    min-width: 90vw;
+    min-height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
 }

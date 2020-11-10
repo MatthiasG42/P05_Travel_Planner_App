@@ -3,24 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>Travel Planner</title>
-        <!-- index.js handles it with webpack, to prevent following error. Refused Style Mime...
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css"> -->
+        
+        <link rel="shortcut icon" href="../media/favicon.ico">
+       
     </head>
 
-    <body>
+    <body class="container">
 
-        <header>
+        <header class="header">
             <section id="headline">
-                Plan your Travel to your Destination
+                <div class="header_content" id="headline_title">      
+                </div>
+                
             </section>
         </header>
 
-        <main>
-            <section>
+        <main class="content">
+            <section id="input_field">
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input id="city" type="text" name="input" value="" placeholder="Type your City Destination here">
                     <input id="start_date" type="date" name="input" value="" placeholder="The start of your trip">
@@ -32,7 +31,7 @@
             
         </main>
 
-        <footer>
+        <footer class="footer">
             <p>Thanks for coming by!          Copyright 2020</p>
         </footer>
     
@@ -44,6 +43,6 @@
                     navigator.serviceWorker.register('/service-worker.js');
                 });
             }
-           </script>
+        </script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 function tripUpdate(dates, geoData, weather, pictures, rest ){
     return `
-            <section id="trip">
+            <section class "trip_card" id="trip">
             <strong id="trip_headline">Your Trip</strong>
                 <div id="destination">You are going to the beautiful city of: ${geoData.city}</div>
                 <div id="first_picture"><img src="${pictures.hits[0].webformatURL}" alt""></div>

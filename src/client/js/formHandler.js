@@ -10,8 +10,24 @@ const handleSubmit = async (event) => {
     // to calculate the differences
     let start_date = new Date (document.getElementById('start_date').value)
     let end_date = new Date (document.getElementById('end_date').value)
-    
-    
+    let today = new Date();
+
+    //Check to see if the input makes sense
+    //Empty city selection
+    if (city_input == ""){
+        alert("You have not entered a city yet");
+        return;
+    }
+    // Start Date in the past
+    if (start_date < today){
+        alert("Your selected start of the trip is in the past");
+        return;
+    }
+    // End Date before Start Date
+    if (end_date < start_date){
+        alert("Your selected end of the trip is before the start");
+        return;
+    }
     
     
     
@@ -26,7 +42,7 @@ const handleSubmit = async (event) => {
     //------------------------------------------------------------------------
     //Handling of the Dates with help from https://stackoverrun.com/de/q/561833
     //------------------------------------------------------------------------
-    let today = new Date();
+    
     //To compare only days
     //today.setHours(0,0,0,0);
     const one_day = 1000*60*60*24;
